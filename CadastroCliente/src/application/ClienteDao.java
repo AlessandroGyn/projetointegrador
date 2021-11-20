@@ -5,14 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ClienteDao {
-	// MÃ©todo para inserir
+	// Método para inserir
 		public void inserir(Cliente cliente) {
 			try {
 				Connection con = Conexao.getConexao();
 				try {
-					PreparedStatement pstmt = con.prepareStatement("insert into tb_cliente(nome,endereco, telefone) values (?,?,?)");
+					PreparedStatement pstmt = con.prepareStatement("insert into tb_cadastro_clientes(nome,cpf_clientes,email,data_nascimento,data_cadastro,celular) values (?,?,?,?,?,?)");
 					pstmt.setString(1, cliente.getNome());
-					 
 					pstmt.executeUpdate();
 				} finally {
 					con.close();
@@ -21,6 +20,4 @@ public class ClienteDao {
 				e.printStackTrace();
 			}
 		}
-			
-
 }
