@@ -51,8 +51,8 @@ public class CadastroClienteController {
     	((Node)(event.getSource())).getScene().getWindow().hide();
     }
     // cancelar --> fechar a tela; --- ok
-    // gravar --> salva os dados no banco e fecha a tela e dá mensagem de gravado com sucesso.
-    // tratar erros - campo obrigatórios
+    // gravar --> salva os dados no banco e fecha a tela e dï¿½ mensagem de gravado com sucesso.
+    // tratar erros - campo obrigatï¿½rios
     
     
     
