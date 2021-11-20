@@ -1,15 +1,19 @@
 package application;
 
+import java.sql.Date;
+
 public class Cliente {
-	int id;
+	Long cpf;
 	String nome;
-	String endereco;
-	String telefone;
-	public int getId() {
-		return id;
+	Date datacadastro;
+	String celular;
+	Date datanascimento;
+	String email;
+	public Long getCpf() {
+		return cpf;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setCpf(Long cpf) {
+		this.cpf = cpf;
 	}
 	public String getNome() {
 		return nome;
@@ -17,16 +21,29 @@ public class Cliente {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getEndereco() {
-		return endereco;
+	public Date getDatacadastro() {
+		return datacadastro;
 	}
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setDatacadastro(Date datacadastro) {
+		this.datacadastro = datacadastro;
 	}
-	public String getTelefone() {
-		return telefone;
+	public String getCelular() {
+		return celular;
 	}
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setCelular(String celular) {
+		this.celular = celular;
 	}
+	public Date getDatanascimento() {
+		return datanascimento;
+	}
+	public void setDatanascimento(Date datanascimento) {
+		this.datanascimento = datanascimento;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 }
