@@ -51,18 +51,14 @@ public class CadastroClienteController {
     @FXML
     void handlerGravar(ActionEvent event) {
     	
-    	try{
-	    	// fase pegar textos
-	    	String campoNome = textFieldNome.getText();
-	    	String campoCPF = textFieldCpf.getText();
-	    	String campoCelular = textFieldCelular.getText();
-	    	//this.getDataCadastro(); //pega no sistema datacadastro
-	    	String campoDataNascimento = textFieldDateNascimento.getPromptText();
-	    	String campoEMail = textFieldEmail.getText();
-    	}catch(Exception ex){
-    		JOptionPane.showMessageDialog(null, null, "Problemas com captura dos dados.", JOptionPane.ERROR_MESSAGE);  
-            throw ex;
-    	}
+    	
+    	// fase pegar textos
+    	String campoNome = textFieldNome.getText();
+    	String campoCPF = textFieldCpf.getText();
+    	String campoCelular = textFieldCelular.getText();
+    	//this.getDataCadastro(); //pega no sistema datacadastro
+    	String campoDataNascimento = textFieldDateNascimento.getPromptText();
+    	String campoEMail = textFieldEmail.getText();
     	
     	
     	
@@ -76,7 +72,11 @@ public class CadastroClienteController {
     	
     	
     	try{
-	    	// fase instanciar objeto
+	    	
+    		
+    		
+    		
+    		// fase instanciar objeto
 	    	cliente.setNome(campoNome);
 	    	cliente.setCpf(Long.valueOf(campoCPF));
 	    	cliente.setCelular(campoCelular);
