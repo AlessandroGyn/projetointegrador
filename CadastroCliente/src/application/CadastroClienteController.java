@@ -41,19 +41,35 @@ public class CadastroClienteController {
     void handlerCancelar(ActionEvent event) {
     	((Node)(event.getSource())).getScene().getWindow().hide();  // fecha janela
     }
+    
+    private Date dataCadastro = new Date();
+    public Date getDataCadastro() {
+		return dataCadastro;
+	}
 
-   
    Cliente cliente = new Cliente();
    ClienteDao clienteDAO = new ClienteDao();
     
     @FXML
     void handlerGravar(ActionEvent event) {
     	
-    	// fase pegar textos
-    	String textfield = textFieldCpf.getAccessibleText();
-    	String textFieldN = textFieldNome.getText();
+    	try{
+	    	// fase pegar textos
+	    	String campoNome = textFieldNome.getText();
+	    	String campoCPF = textFieldCpf.getText();
+	    	String campoCelular = textFieldCelular.getText();
+	    	//this.getDataCadastro(); //pega no sistema datacadastro
+	    	String campoDataNascimento = textFieldDateNascimento.getPromptText();
+	    	String campoEMail = textFieldEmail.getText();
+    	}catch(Exception ex){
+    		JOptionPane.showMessageDialog(null, null, "Problemas com captura dos dados.", JOptionPane.ERROR_MESSAGE);  
+            throw ex;
+    	}
+    	
+    	
+    	
     	// pode cliar um metodo para preecher o cliente  tipo: this.preencherCliente
-    	// 1-pega os valores dos textfields
+    	// 1-pega os valores dos textfields  // verifica se campos estão vazios, e campos obrigatórios
     	// 2-grava os valores no objeto cliente
     	// 3-grava o objeto cliente no BD
     	
@@ -61,44 +77,47 @@ public class CadastroClienteController {
     	
     	
     	
-    	
-    	// fase instanciar objeto
-    	cliente.setNome(textFieldN);
-    	System.out.println(textFieldN);
-    	cliente.setCpf(Long.valueOf("524568262"));
-    	cliente.setCelular("62 9983-5245");
-    	// =================================== PEGAR DATA CADASTRO ==============================
-		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // define padrão das datas BR
-		LocalDate dataCadastroLocal = LocalDate.parse("23/11/2015", formato);  // aqui pega a data do fieldText
-		Date dataCadastroDate = java.sql.Date.valueOf(dataCadastroLocal);  // converte a data para tipo Date
-		cliente.setDatacadastro(dataCadastroDate);  // altera o atributo
-		// =================================== PEGAR DATA CADASTRO - FIM ==============================
-		LocalDate dataNascimentoLocal = LocalDate.parse("23/11/2015", formato);  // aqui pega a data do fieldText
-		Date dataNascimentoDate = java.sql.Date.valueOf(dataNascimentoLocal);  // converte a data para tipo Date
-		cliente.setDatanascimento(dataNascimentoDate);  // altera o atributo
-		// ===========================================================================================
-		cliente.setEmail("amanha@hoje.com");
+    	try{
+	    	// fase instanciar objeto
+	    	cliente.setNome(campoNome);
+	    	cliente.setCpf(Long.valueOf(campoCPF));
+	    	cliente.setCelular(campoCelular);
+	    	cliente.setDatacadastro(this.getDataCadastro());
+	    	DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // define padrão das datas BR
+	    	LocalDate dataNascimentoLocal = LocalDate.parse(campoDataNascimento, formato);  // aqui pega a data do fieldText
+			Date dataNascimentoDate = java.sql.Date.valueOf(dataNascimentoLocal);  // converte a data para tipo Date
+			cliente.setDatanascimento(dataNascimentoDate);  // altera o atributo
+			cliente.setEmail(campoEMail);
+    	}catch(Exception ex){
+    		JOptionPane.showMessageDialog(null, null, "Problemas com o objeto", JOptionPane.ERROR_MESSAGE);  
+            throw ex;
+    	}
+		
     	
 		try{
 			// fase gravar no BD
 			clienteDAO.inserir(cliente);  // gravar no BD
+			
+			//limpar campos textField
+			textFieldNome.setText("");
+			textFieldCpf.setText("");
+			textFieldCelular.setText("");
+			textFieldDateNascimento.setPromptText("");
+			textFieldEmail.setText("");
+			
+			
 			JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!!");
 		}catch(Exception ex){
-            JOptionPane.showMessageDialog(null, null, "Problemas com o cadastro", JOptionPane.ERROR_MESSAGE);  
+            JOptionPane.showMessageDialog(null, null, "Problemas com Banco de Dados.", JOptionPane.ERROR_MESSAGE);  
             throw ex;
 		}
 		
 		
-    	//Button botaoClicado = (Button)event.getSource();
-    	//c.digit( Integer.parseInt( botaoClicado.getText() ) );
-    	// fecha janela
-    	((Node)(event.getSource())).getScene().getWindow().hide();
+    	
+    	((Node)(event.getSource())).getScene().getWindow().hide();  // fecha janela
     }
     // cancelar --> fechar a tela; --- ok
     // gravar --> salva os dados no banco e fecha a tela e dï¿½ mensagem de gravado com sucesso.
-    // tratar erros - campo obrigatï¿½rios
-    
-    
-    
+    // tratar erros - campo obrigatórios
     
 }
