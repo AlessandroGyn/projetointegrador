@@ -1,7 +1,8 @@
 package application;
 
-import java.sql.SQLException;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -40,54 +41,39 @@ public class CadastroClienteController {
     	((Node)(event.getSource())).getScene().getWindow().hide();  // fecha janela
     }
     
-    private Date dataCadastro = new Date();
-    public Date getDataCadastro() {
-		return dataCadastro;
-	}
+    LocalDate dataHoje = LocalDate.now(); 
 
-   Cliente cliente = new Cliente();
-   ClienteDao clienteDAO = new ClienteDao();
+    Cliente cliente = new Cliente();
+    ClienteDao clienteDAO = new ClienteDao();
     
     @FXML
     void handlerGravar(ActionEvent event) {
-    	
-    	
-    	// fase pegar textos
-    	String campoNome = textFieldNome.getText();
-    	String campoCPF = textFieldCpf.getText();
-    	String campoCelular = textFieldCelular.getText();
-    	//this.getDataCadastro(); //pega no sistema datacadastro
-    	String campoDataNascimento = textFieldDateNascimento.getPromptText();
-    	String campoEMail = textFieldEmail.getText();
-    	
-    	
-    	
     	// pode cliar um metodo para preecher o cliente  tipo: this.preencherCliente
     	// 1-pega os valores dos textfields  // verifica se campos estão vazios, e campos obrigatórios
     	// 2-grava os valores no objeto cliente
     	// 3-grava o objeto cliente no BD
-    	
-    	
-    	
-    	
-    	
-    	try{
-	    	
+    	try {
     		
+    		// fase captura de dados
+	    	String campoNome = textFieldNome.getText();
+	    	String campoCPF = textFieldCpf.getText();
+	    	String campoCelular = textFieldCelular.getText();
+	    	// pega no sistema data atual que será a data do cadastro
+	    	Date dataCadastro = java.sql.Date.valueOf(dataHoje);  // converte LocalDate para Date
+	    	LocalDate campoDataNascimento = textFieldDateNascimento.getValue();
+	    	Date dataNascimento = java.sql.Date.valueOf(campoDataNascimento);  // converte LocalDate para Date
+	    	String campoEMail = textFieldEmail.getText();
     		
-    		
-    		// fase instanciar objeto
+	    	// fase instanciar objeto
 	    	cliente.setNome(campoNome);
 	    	cliente.setCpf(Long.valueOf(campoCPF));
 	    	cliente.setCelular(campoCelular);
-	    	cliente.setDatacadastro(this.getDataCadastro());
 	    	DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); // define padrão das datas BR
-	    	LocalDate dataNascimentoLocal = LocalDate.parse(campoDataNascimento, formato);  // aqui pega a data do fieldText
-			Date dataNascimentoDate = java.sql.Date.valueOf(dataNascimentoLocal);  // converte a data para tipo Date
-			cliente.setDatanascimento(dataNascimentoDate);  // altera o atributo
+	    	cliente.setDatacadastro(dataCadastro);
+	    	cliente.setDatanascimento(dataNascimento);  // altera o atributo
 			cliente.setEmail(campoEMail);
     	}catch(Exception ex){
-    		JOptionPane.showMessageDialog(null, null, "Problemas com o objeto", JOptionPane.ERROR_MESSAGE);  
+    		JOptionPane.showMessageDialog(null, "Verifique a fase instanciar objeto.", "Problemas com o objeto", JOptionPane.ERROR_MESSAGE);  
             throw ex;
     	}
 		

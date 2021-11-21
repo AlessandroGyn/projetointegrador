@@ -1,6 +1,6 @@
 package application;
 	
-import java.sql.Date;
+//import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -14,6 +14,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.util.Date;
 
 public class Main extends Application {
 	@Override
@@ -31,7 +33,20 @@ public class Main extends Application {
 		}
 	}
 	
+	
+    
+	
 	public static void main(String[] args) throws ParseException {
+		
+		/*
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		Date dataCadastro = new Date();
+		LocalDate dataNascimentoLocal = LocalDate.parse(dataCadastro, formato);  // aqui pega a data do fieldText
+		Date dataNascimentoDate = java.sql.Date.valueOf(dataNascimentoLocal);  // converte a data para tipo Date
+		System.out.println(dataNascimentoDate);
+		*/
+		
+		
 		launch(args);
 		/*
 		Cliente cliente = new Cliente();
