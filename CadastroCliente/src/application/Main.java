@@ -12,7 +12,7 @@ public class Main extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
 			Scene scene = new Scene(root,600,400);
-			scene.getStylesheets().add(getClass().getResource("/css/estilo.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("/estilo.css").toExternalForm());
 			janelaLogin.setScene(scene);
 			janelaLogin.setTitle("Login");
 			janelaLogin.setResizable(false);

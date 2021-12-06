@@ -1,40 +1,39 @@
 package controller;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import util.LoadFXMLGeral;
 
 
 
 public class LoginController {
+	
+	@FXML Stage janela;
 	@FXML private Button btncancelar;
     @FXML private Button btnentrar;
     @FXML private PasswordField textFieldSenha;
     @FXML private TextField textFieldUser;
     
     @FXML 
-    void handlerEntrar(ActionEvent event) {
+    public void handlerEntrar(ActionEvent event) throws IOException {
+		
+    	//System.out.println(textFieldUser.getText());   comparar com BD
+    	//System.out.println(textFieldSenha.getText());
     	if (textFieldUser.getText().equals("teste") && textFieldSenha.getText().equals("123")    ) {
     		// se a senha e usuario ok ---> então fecha esta classe e instancia a principal
     		fecha(event);
-    		Stage janelaMain = new Stage();
     		try {
-    			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("/Main.fxml"));
-    			Scene scene = new Scene(root,600,400);
-    			scene.getStylesheets().add(getClass().getResource("/css/estilo.css").toExternalForm());
-    			janelaMain.setScene(scene);
-    			janelaMain.setTitle("PRINCIPAL");
-    			janelaMain.setResizable(false);
-    			janelaMain.show();
+    			janela = LoadFXMLGeral.criarJanela("CadastroCliente/src/view/Principal.fxml", "PRINCIPAL", "/estilo.css", 600, 400);
+		    	janela.show();
     		} catch(Exception e) {
     			e.printStackTrace();
     		}
@@ -48,23 +47,11 @@ public class LoginController {
     }
 
     @FXML
-    void handlerSenha(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handlerUser(ActionEvent event) {
-
-    }
-
-    @FXML
     void handlercancelar(ActionEvent event) {
     	fecha(event);
-    	//((Node)(event.getSource())).getScene().getWindow().hide();  // fecha janela
     }
     public void fecha(ActionEvent event) {
     	((Node)(event.getSource())).getScene().getWindow().hide();  // fecha janela
-    	//janelaLogin.getStage().close();
     }
 }
 

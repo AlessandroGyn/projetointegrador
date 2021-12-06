@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="View/|View/|view/" kind="src" path="CadastroCliente/src"/>
+	<classpathentry excluding="View/|View/|view/|css/" kind="src" path="CadastroCliente/src"/>
 	<classpathentry kind="src" path="CadastroCliente/src/view"/>
+	<classpathentry kind="src" path="CadastroCliente/src/css"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javafx">
 		<attributes>
 			<attribute name="module" value="true"/>

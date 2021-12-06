@@ -3,51 +3,35 @@ package controller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-
 import javax.swing.JOptionPane;
-
 import application.Cliente;
 import application.ClienteDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import util.LoadFXMLGeral;
 
 public class CadastroClienteController {
-    @FXML
-    private Button btnCancelar;
-    @FXML
-    private Button btnGravar;
-    @FXML
-    private TextField textFieldCelular;
-    @FXML
-    private TextField textFieldCpf;
-    @FXML
-    private DatePicker textFieldDateNascimento;
-    @FXML
-    private TextField textFieldEmail;
-    @FXML
-    private TextField textFieldNome;
+	@FXML Stage janela;
+	@FXML private Button btnCancelar;
+    @FXML private Button btnGravar;
+    @FXML private TextField textFieldCelular;
+    @FXML private TextField textFieldCpf;
+    @FXML private DatePicker textFieldDateNascimento;
+    @FXML private TextField textFieldEmail;
+    @FXML private TextField textFieldNome;
     @FXML
     void handlerCancelar(ActionEvent event) {
     	((Node)(event.getSource())).getScene().getWindow().hide();  // fecha janela
-    	Stage janelaMain = new Stage();
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("/Main.fxml"));
-			Scene scene = new Scene(root,600,400);
-			scene.getStylesheets().add(getClass().getResource("/css/estilo.css").toExternalForm());
-			janelaMain.setScene(scene);
-			janelaMain.setTitle("PRINCIPAL");
-			janelaMain.setResizable(false);
-			janelaMain.show();
+			janela = LoadFXMLGeral.criarJanela("CadastroCliente/src/view/Principal.fxml", "PRINCIPAL", "/estilo.css", 600, 400);
+	    	janela.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -56,7 +40,7 @@ public class CadastroClienteController {
     Cliente cliente = new Cliente();  // Instancia objeto cliente
     ClienteDao clienteDAO = new ClienteDao(); // Instancia objeto clienteDao
     @FXML
-    void handlerGravar(ActionEvent event) {
+    void handlerGravar(ActionEvent event) throws Throwable {
     	Object[] options = { "SIM", "CANCELAR" };
 		int opcao = JOptionPane.showOptionDialog(null, "Confirma a gravação dos dados?", "CONFIRMAÇÃO", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
     	if (opcao==0) {
@@ -65,8 +49,10 @@ public class CadastroClienteController {
 		    	try {
 					clienteDAO.inserir(cliente);  // gravar no BD
 					limparCampos(); //limpar campos textField
-					((Node)(event.getSource())).getScene().getWindow().hide();  // fecha janela
-					JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!!", "Sucesso", JOptionPane.INFORMATION_MESSAGE, null);
+					((Node)(event.getSource())).getScene().getWindow().hide();  // fecha janela de Cadastro
+					JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!!", "Sucesso", JOptionPane.INFORMATION_MESSAGE, null);  // aviso que gravou
+					janela = LoadFXMLGeral.criarJanela("CadastroCliente/src/view/Principal.fxml", "PRINCIPAL", "/estilo.css", 600, 400); // retorna para janela PRINCIPAL
+			    	janela.show();
 				}catch(Exception ex){
 		            JOptionPane.showMessageDialog(null, "Verifique o ClienteDAO.", "Problemas com Banco de Dados.", JOptionPane.ERROR_MESSAGE);  
 		            throw ex;
