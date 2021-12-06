@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="CadastroCliente/src"/>
+	<classpathentry excluding="View/|View/|view/" kind="src" path="CadastroCliente/src"/>
+	<classpathentry kind="src" path="CadastroCliente/src/view"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javafx">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -11,6 +12,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Arquivo de Programas/javafx-sdk-17.0.0.1/lib/postgresql-42.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Computador/git/projetointegrador/CadastroCliente/DaoJars/postgresql-42.3.1.jar"/>
 	<classpathentry kind="output" path="CadastroCliente/bin"/>
 </classpath>

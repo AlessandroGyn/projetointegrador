@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="416.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <AnchorPane layoutX="196.0" layoutY="61.0" prefHeight="307.0" prefWidth="273.0" style="-fx-background-color: #f5f5f5;">
+         <children>
+            <TextField fx:id="textFieldUser" layoutX="31.0" layoutY="61.0" onAction="#handlerUser" prefHeight="26.0" prefWidth="211.0" promptText="Usuário" />
+            <PasswordField fx:id="textFieldSenha" layoutX="31.0" layoutY="126.0" onAction="#handlerSenha" prefHeight="26.0" prefWidth="211.0" promptText="Senha" />
+            <Button fx:id="btncancelar" layoutX="145.0" layoutY="201.0" mnemonicParsing="false" onAction="#handlercancelar" prefHeight="42.0" prefWidth="102.0" text="Cancelar" />
+            <Button fx:id="btnentrar" layoutX="31.0" layoutY="201.0" mnemonicParsing="false" onAction="#handlerEntrar" prefHeight="42.0" prefWidth="102.0" text="Entrar" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

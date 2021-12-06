@@ -7,15 +7,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CadastroClienteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroClienteController">
 	<children>
 		<Pane layoutX="21.0" layoutY="19.0" prefHeight="363.0" prefWidth="559.0">
 			<children>
-				<TextField fx:id="textFieldNome" layoutX="79.0" layoutY="51.0" prefHeight="24.0" prefWidth="450.0" />
-				<TextField fx:id="textFieldCpf" layoutX="79.0" layoutY="107.0" prefHeight="24.0" prefWidth="111.0" promptText="___-___-___-__" />
-				<TextField fx:id="textFieldEmail" layoutX="255.0" layoutY="107.0" prefHeight="24.0" prefWidth="276.0" />
-				<TextField fx:id="textFieldCelular" layoutX="81.0" layoutY="151.0" prefHeight="24.0" prefWidth="121.0" />
-				<DatePicker fx:id="textFieldDateNascimento" layoutX="409.0" layoutY="151.0" prefHeight="24.0" prefWidth="121.0" />
+				<TextField fx:id="textFieldNome" layoutX="79.0" layoutY="51.0" prefHeight="24.0" prefWidth="450.0" styleClass="text-field" />
+				<TextField fx:id="textFieldCpf" layoutX="79.0" layoutY="107.0" prefHeight="24.0" prefWidth="111.0" promptText="___-___-___-__" styleClass="text-field" />
+				<TextField fx:id="textFieldEmail" layoutX="255.0" layoutY="107.0" prefHeight="24.0" prefWidth="276.0" styleClass="text-field" />
+				<TextField fx:id="textFieldCelular" layoutX="81.0" layoutY="151.0" prefHeight="24.0" prefWidth="121.0" styleClass="text-field" />
+				<DatePicker fx:id="textFieldDateNascimento" layoutX="409.0" layoutY="151.0" prefHeight="24.0" prefWidth="121.0" styleClass="date-picker" />
 				<Button fx:id="btnCancelar" cancelButton="true" layoutX="85.0" layoutY="264.0" mnemonicParsing="false" onAction="#handlerCancelar" prefHeight="43.0" prefWidth="121.0" text="Cancelar" />
 				<Button fx:id="btnGravar" defaultButton="true" layoutX="329.0" layoutY="264.0" mnemonicParsing="false" onAction="#handlerGravar" prefHeight="43.0" prefWidth="121.0" text="Gravar" />
 				<Label layoutX="24.0" layoutY="55.0" text="Nome :" />

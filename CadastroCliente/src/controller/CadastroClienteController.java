@@ -1,19 +1,27 @@
-package application;
+package controller;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+
 import javax.swing.JOptionPane;
+
+import application.Cliente;
+import application.ClienteDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 public class CadastroClienteController {
-
     @FXML
     private Button btnCancelar;
     @FXML
@@ -31,12 +39,22 @@ public class CadastroClienteController {
     @FXML
     void handlerCancelar(ActionEvent event) {
     	((Node)(event.getSource())).getScene().getWindow().hide();  // fecha janela
+    	Stage janelaMain = new Stage();
+		try {
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("/Main.fxml"));
+			Scene scene = new Scene(root,600,400);
+			scene.getStylesheets().add(getClass().getResource("/css/estilo.css").toExternalForm());
+			janelaMain.setScene(scene);
+			janelaMain.setTitle("PRINCIPAL");
+			janelaMain.setResizable(false);
+			janelaMain.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
     }
-    
     LocalDate dataHoje = LocalDate.now(); // Instancia objeto com a data de hoje
     Cliente cliente = new Cliente();  // Instancia objeto cliente
     ClienteDao clienteDAO = new ClienteDao(); // Instancia objeto clienteDao
-    
     @FXML
     void handlerGravar(ActionEvent event) {
     	Object[] options = { "SIM", "CANCELAR" };
@@ -88,9 +106,17 @@ public class CadastroClienteController {
 	    	cliente.setCelular(textFieldCelular.getText());
 	    	Date dataCadastro = java.sql.Date.valueOf(dataHoje);  // converte LocalDate para Date
 	    	cliente.setDatacadastro(dataCadastro);
-	    	LocalDate campoDataNascimento = textFieldDateNascimento.getValue();
-	    	Date dataNascimento = java.sql.Date.valueOf(campoDataNascimento);  // converte LocalDate para Date
-	    	cliente.setDatanascimento(dataNascimento);
+	    	if (textFieldDateNascimento.getValue() != null ) {
+	    		LocalDate campoDataNascimento = textFieldDateNascimento.getValue();
+	    		Date dataNascimento = java.sql.Date.valueOf(campoDataNascimento);  // converte LocalDate para Date
+		    	cliente.setDatanascimento(dataNascimento);
+	    	}else {
+	    		String strDataNascimento = "01/01/1900";
+	    		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	    		LocalDate campoDataNascimento = LocalDate.parse(strDataNascimento,formatter);
+	    		Date dataNascimento = java.sql.Date.valueOf(campoDataNascimento);  // converte LocalDate para Date
+		    	cliente.setDatanascimento(dataNascimento);
+	    	}
 			cliente.setEmail(textFieldEmail.getText());
     	}catch(Exception ex){
     		JOptionPane.showMessageDialog(null, "Verifique a fase instanciar objeto.", "Problemas com o objeto", JOptionPane.ERROR_MESSAGE);  
