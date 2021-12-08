@@ -6,23 +6,29 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CadastroClienteController">
 	<children>
 		<Pane layoutX="21.0" layoutY="19.0" prefHeight="363.0" prefWidth="559.0">
 			<children>
-				<TextField fx:id="textFieldNome" layoutX="79.0" layoutY="51.0" prefHeight="24.0" prefWidth="450.0" styleClass="text-field" />
-				<TextField fx:id="textFieldCpf" layoutX="79.0" layoutY="107.0" prefHeight="24.0" prefWidth="111.0" promptText="___-___-___-__" styleClass="text-field" />
-				<TextField fx:id="textFieldEmail" layoutX="255.0" layoutY="107.0" prefHeight="24.0" prefWidth="276.0" styleClass="text-field" />
-				<TextField fx:id="textFieldCelular" layoutX="81.0" layoutY="151.0" prefHeight="24.0" prefWidth="121.0" styleClass="text-field" />
-				<DatePicker fx:id="textFieldDateNascimento" layoutX="409.0" layoutY="151.0" prefHeight="24.0" prefWidth="121.0" styleClass="date-picker" />
+				<TextField fx:id="textFieldNome" layoutX="79.0" layoutY="89.0" prefHeight="24.0" prefWidth="450.0" styleClass="text-field" />
+				<TextField fx:id="textFieldCpf" layoutX="79.0" layoutY="145.0" prefHeight="24.0" prefWidth="111.0" promptText="___-___-___-__" styleClass="text-field" />
+				<TextField fx:id="textFieldEmail" layoutX="255.0" layoutY="145.0" prefHeight="24.0" prefWidth="276.0" styleClass="text-field" />
+				<TextField fx:id="textFieldCelular" layoutX="81.0" layoutY="189.0" prefHeight="24.0" prefWidth="121.0" styleClass="text-field" />
+				<DatePicker fx:id="textFieldDateNascimento" layoutX="409.0" layoutY="189.0" prefHeight="24.0" prefWidth="121.0" styleClass="date-picker" />
 				<Button fx:id="btnCancelar" cancelButton="true" layoutX="85.0" layoutY="264.0" mnemonicParsing="false" onAction="#handlerCancelar" prefHeight="43.0" prefWidth="121.0" text="Cancelar" />
 				<Button fx:id="btnGravar" defaultButton="true" layoutX="329.0" layoutY="264.0" mnemonicParsing="false" onAction="#handlerGravar" prefHeight="43.0" prefWidth="121.0" text="Gravar" />
-				<Label layoutX="24.0" layoutY="55.0" text="Nome :" />
-				<Label layoutX="24.0" layoutY="111.0" text="CPF :" />
-				<Label layoutX="205.0" layoutY="111.0" text="E-Mail: " />
-				<Label layoutX="24.0" layoutY="153.0" text="Celular :" />
-				<Label layoutX="280.0" layoutY="155.0" text="Data Nascimento :" />
+				<Label layoutX="24.0" layoutY="93.0" text="Nome :" />
+				<Label layoutX="24.0" layoutY="149.0" text="CPF :" />
+				<Label layoutX="205.0" layoutY="149.0" text="E-Mail: " />
+				<Label layoutX="24.0" layoutY="191.0" text="Celular :" />
+				<Label layoutX="280.0" layoutY="193.0" text="Data Nascimento :" />
+            <Label layoutX="140.0" layoutY="14.0" text="CADASTRO DE CLIENTES">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
 			</children>
 		</Pane>
 	</children>

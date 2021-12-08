@@ -1,27 +1,19 @@
 package application;
-	
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.FXML;
 import javafx.stage.Stage;
-
+import util.LoadFXMLGeral;
 public class Main extends Application {
+	@FXML Stage janela;
+	public static void main(String[] args) {
+		launch(args);
+	}
 	@Override
-	public void start(Stage janelaLogin) {
+	public void start(Stage arg0) throws Exception {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/Login.fxml"));
-			Scene scene = new Scene(root,600,400);
-			scene.getStylesheets().add(getClass().getResource("/estilo.css").toExternalForm());
-			janelaLogin.setScene(scene);
-			janelaLogin.setTitle("Login");
-			janelaLogin.setResizable(false);
-			janelaLogin.show();
+			janela = LoadFXMLGeral.criarJanela("CadastroCliente/src/view/Login.fxml", "LOGIN", "/estilo.css", 600, 400);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-	public static void main(String[] args) {
-		launch(args);
 	}
 }

@@ -1,0 +1,32 @@
+.text-field {
+    -fx-background-color: -fx-text-box-border, -fx-background;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius:  0;
+}
+.text-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-background ;
+}
+.button  {
+	 -fx-font-family: Helvetica;
+	 -fx-padding:10px;
+	 -fx-text-alignment: center;
+	 -fx-border-width: 2px; 
+	 -fx-border-color: rgba(0,0,0,0.1);
+	 -fx-text-fill:black ;
+	 -fx-border-radius: 40%;
+	 -fx-background-radius:30;
+	 -fx-border-radius:30;
+}
+.date-picker  {
+	-fx-background-color: rgba(0,0,0,0.1);
+	-fx-border-color: rgba(0,0,0,0.1);
+	-fx-background-radius:30;
+	-fx-border-radius:30;
+	/*-fx-min-height:45;*/
+	-fx-text-fill: #000000;
+	-fx-prompt-text-fill: #000000;
+	-fx-border-width:0px;
+	-fx-alignment: center;
+	/*-fx-font-size: 1.2em;*/
+	-fx-effect: null;
+}

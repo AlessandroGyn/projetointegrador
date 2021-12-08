@@ -30,8 +30,8 @@ public class CadastroClienteController {
     void handlerCancelar(ActionEvent event) {
     	((Node)(event.getSource())).getScene().getWindow().hide();  // fecha janela
 		try {
-			janela = LoadFXMLGeral.criarJanela("CadastroCliente/src/view/Principal.fxml", "PRINCIPAL", "/estilo.css", 600, 400);
-	    	janela.show();
+			janela = LoadFXMLGeral.criarJanela("CadastroCliente/src/view/Principal.fxml", "PRINCIPAL", "/estilo.css", 1200, 800);
+	    	//janela.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -51,8 +51,8 @@ public class CadastroClienteController {
 					limparCampos(); //limpar campos textField
 					((Node)(event.getSource())).getScene().getWindow().hide();  // fecha janela de Cadastro
 					JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!!", "Sucesso", JOptionPane.INFORMATION_MESSAGE, null);  // aviso que gravou
-					janela = LoadFXMLGeral.criarJanela("CadastroCliente/src/view/Principal.fxml", "PRINCIPAL", "/estilo.css", 600, 400); // retorna para janela PRINCIPAL
-			    	janela.show();
+					janela = LoadFXMLGeral.criarJanela("CadastroCliente/src/view/Principal.fxml", "PRINCIPAL", "/estilo.css", 1200, 800); // retorna para janela PRINCIPAL
+			    	//janela.show();
 				}catch(Exception ex){
 		            JOptionPane.showMessageDialog(null, "Verifique o ClienteDAO.", "Problemas com Banco de Dados.", JOptionPane.ERROR_MESSAGE);  
 		            throw ex;
@@ -105,7 +105,7 @@ public class CadastroClienteController {
 	    	}
 			cliente.setEmail(textFieldEmail.getText());
     	}catch(Exception ex){
-    		JOptionPane.showMessageDialog(null, "Verifique a fase instanciar objeto.", "Problemas com o objeto", JOptionPane.ERROR_MESSAGE);  
+    		JOptionPane.showMessageDialog(null, "Verifique a fase instanciar objeto Cliente.", "Problemas com o objeto", JOptionPane.ERROR_MESSAGE);  
             throw ex;
     	}
     }
@@ -117,5 +117,4 @@ public class CadastroClienteController {
 		textFieldDateNascimento.setValue(null);
 		textFieldEmail.clear();
     }
-
 }

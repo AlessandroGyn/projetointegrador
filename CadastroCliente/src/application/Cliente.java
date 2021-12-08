@@ -1,14 +1,13 @@
 package application;
-
 import java.util.Date;
 
 public class Cliente {
-	Long cpf;
-	String nome;
-	Date datacadastro;
-	String celular;
-	Date datanascimento;
-	String email;
+	private Long cpf;
+	private String nome;
+	private Date datacadastro;
+	private String celular;
+	private Date datanascimento;
+	private String email;
 	public Long getCpf() {
 		return cpf;
 	}
